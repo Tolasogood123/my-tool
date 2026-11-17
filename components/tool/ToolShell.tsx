@@ -25,7 +25,7 @@ export function ToolShell({ tool, children }: ToolShellProps) {
   const related = getRelated(tool);
 
   return (
-    <div className="container-page py-10 lg:py-14" data-category={tool.category}>
+    <div className="container-page pb-28 pt-10 sm:pb-14 lg:pt-14" data-category={tool.category}>
       <JsonLd
         data={[
           toolJsonLd(tool),

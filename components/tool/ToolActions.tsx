@@ -25,7 +25,7 @@ export function ToolActions({ slug, title }: { slug: string; title: string }) {
   };
 
   return (
-    <div className="sticky bottom-0 z-20 -mx-4 border-t border-border bg-background/90 px-4 py-3 backdrop-blur-xl sm:hidden">
+    <div className="sticky bottom-0 z-20 -mx-4 border-t border-border bg-background/90 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom,0px))] backdrop-blur-xl sm:hidden">
       <div className="flex items-center gap-2">
         <Link
           href="/tools"

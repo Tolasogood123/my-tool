@@ -100,21 +100,21 @@ export function KeywordDensityChecker() {
       </div>
 
       {counters.length > 0 ? (
-        <div className="overflow-hidden rounded-card border border-border">
-          <table className="w-full text-left text-sm">
+        <div className="scrollbar-thin max-w-full overflow-x-auto rounded-card border border-border">
+          <table className="w-full min-w-[320px] table-fixed text-left text-sm">
             <thead className="bg-surface-muted text-xs uppercase tracking-wide text-subtle-foreground">
               <tr>
-                <th className="px-4 py-3 font-medium">Term</th>
-                <th className="px-4 py-3 text-right font-medium">Count</th>
-                <th className="px-4 py-3 text-right font-medium">Share</th>
+                <th className="w-[60%] px-4 py-3 font-medium">Term</th>
+                <th className="w-[18%] px-4 py-3 text-right font-medium">Count</th>
+                <th className="w-[22%] px-4 py-3 text-right font-medium">Share</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border bg-surface">
               {counters.map((counter) => (
                 <tr key={counter.term}>
-                  <td className="px-4 py-3">
+                  <td className="break-words px-4 py-3">
                     <span className="font-medium">{counter.term}</span>
-                    <span className="mt-1 block h-1 rounded-full bg-accent" style={{ width: `${Math.max(2, (counter.count / maxCount) * 100)}%` }} />
+                    <span className="mt-1 block h-1 max-w-full rounded-full bg-accent" style={{ width: `${Math.max(2, (counter.count / maxCount) * 100)}%` }} />
                   </td>
                   <td className="px-4 py-3 text-right tabular-nums">{counter.count}</td>
                   <td className="px-4 py-3 text-right tabular-nums text-muted-foreground">

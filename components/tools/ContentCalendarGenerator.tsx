@@ -276,11 +276,12 @@ export function ContentCalendarGenerator() {
             </div>
           </div>
 
-          <div className="grid grid-cols-7 gap-1">
+          <div className="scrollbar-thin -mx-2 overflow-x-auto px-2">
+          <div className="grid min-w-[560px] grid-cols-7 gap-1">
             {CALENDAR_WEEKDAYS.map((day) => (
               <div
                 key={day}
-                className="pb-1 text-center text-[10px] font-semibold uppercase tracking-wide text-subtle-foreground"
+                className="pb-1 text-center text-[11px] font-semibold uppercase tracking-wide text-subtle-foreground sm:text-xs"
               >
                 {day}
               </div>
@@ -329,6 +330,7 @@ export function ContentCalendarGenerator() {
                 </button>
               );
             })}
+          </div>
           </div>
           <p className="mt-3 text-xs text-subtle-foreground">
             Your calendar and posts stay in this browser tab. Export a CSV to keep or share them.

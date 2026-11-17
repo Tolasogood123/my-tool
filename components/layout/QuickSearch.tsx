@@ -48,7 +48,7 @@ export function QuickSearch() {
         onClick={() => setOpen(true)}
         aria-label="Open quick search"
         title="Quick search (Ctrl+K)"
-        className="inline-flex h-10 items-center gap-2 rounded-control border border-border bg-surface px-3 text-sm text-muted-foreground transition-colors hover:border-border-strong hover:bg-surface-muted"
+        className="inline-flex h-11 items-center gap-2 rounded-control border border-border bg-surface px-3 text-sm text-muted-foreground transition-colors hover:border-border-strong hover:bg-surface-muted"
       >
         <Search className="size-4" aria-hidden="true" />
         <kbd className="hidden rounded-[0.4rem] border border-border bg-surface-muted px-1.5 py-0.5 font-mono text-[10px] font-semibold sm:inline">

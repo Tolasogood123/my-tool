@@ -110,7 +110,8 @@ export function ImageColorPicker() {
     setCursor({ x: Math.floor(x), y: Math.floor(y) });
   };
 
-  const onCanvasClick = (event: React.MouseEvent<HTMLCanvasElement>) => {
+  const onCanvasPointer = (event: React.PointerEvent<HTMLCanvasElement>) => {
+    if (!loaded) return;
     const canvas = event.currentTarget;
     const rect = canvas.getBoundingClientRect();
     if (!rect.width || !rect.height) return;
@@ -227,12 +228,15 @@ export function ImageColorPicker() {
             ref={canvasRef}
             width={1}
             height={1}
-            onClick={onCanvasClick}
+            onPointerDown={onCanvasPointer}
+            onPointerMove={(event) => {
+              if (event.buttons > 0) onCanvasPointer(event);
+            }}
             onKeyDown={onCanvasKeyDown}
             tabIndex={loaded ? 0 : -1}
             role="img"
             aria-label="Uploaded image. Click a pixel or use arrow keys to sample its color."
-            className={`mx-auto block h-auto max-h-96 w-full rounded-control object-contain ${
+            className={`mx-auto block h-auto max-h-96 w-full touch-none rounded-control object-contain ${
               loaded ? "cursor-crosshair focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent" : ""
             }`}
           />

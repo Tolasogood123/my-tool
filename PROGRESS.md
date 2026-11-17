@@ -123,6 +123,17 @@ Free Tools. Smarter Work. Anywhere.
 - [x] Per-batch blog guides: 11 original 800+ word guides added to `lib/blog.ts` (one per batch), with internal links to their tools
 - [x] Final verification after full integration: `check:registry` 110 tools valid, tsc pass, lint pass (all subagent lint errors fixed), build pass (110 tool pages prerendered)
 
+## Responsive Audit and Fixes (RESPONSIVE prompt)
+
+### Stage 1 (audit, no changes)
+- [x] Static audit across all page types and 110 tool components at 360/390/768/1024/1280/1920px; found: sub-16px inputs, non-drawer mobile nav, Keyword Density table overflow, <44px controls, missing anchor offsets, sticky-bar overlap, missing safe-area insets, 7-day calendar cells, mouse-only crop/color picking, invoice table hint, zoom/large-font fixed heights; no `100vh` usage (already `min-h-dvh`).
+
+### Stages 2–4 (fixes + QA)
+- [x] Stage 2 global: safe-area-aware container (76→88rem at 1536px), full-height MobileNav drawer with backdrop/scroll lock/focus trap/close-on-route, 16px inputs enforced in `@layer utilities` (beats component `text-xs`), 44px min controls, `scroll-padding-top` + `[id]` scroll-margin for anchors, safe-area bottom padding on tool action bar, global word-wrap/`pre`+table scroll containers with mobile swipe hint
+- [x] Stage 3 tools: sticky Copy/Download/Clear bar in ToolOutput, Keyword Density table `table-fixed` with wrapping + scroll, Content Calendar 560px min-width horizontal scroll, Invoice table scroll hint, Dropdown max-height + scroll, pointer-event color picking and touch-drag crop with pointer capture, image previews `max-w-full`
+- [x] Stage 4 QA: tsc/lint/build pass; all representative page types + 20 named priority tools return 200; mobile drawer verified by source (focus trap, Escape, route close, scroll lock); contrast/tap-target rules verified in CSS
+- [ ] Remaining honest limitation: no real-browser pixel check at 360/390/768/1024/1280/1920px, landscape, 200% zoom, or large system font sizes — no browser automation is installed. Visual confirmation on a real device is still recommended.
+
 ## UI Refresh (TOLADEV_UI_REFRESH_PROMPT.md)
 
 - [x] Stage 1: design tokens and base components — 13 category accent token sets (light + dark), focus/shadow/radius tokens, upgraded Card/Button/Input/ThemeToggle, new Badge chip component, category-coloured ToolCard and CategoryGrid, new `/design` previews for category accents and chips; tsc/lint/build pass, key pages 200

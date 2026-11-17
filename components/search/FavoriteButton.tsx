@@ -22,7 +22,7 @@ export function FavoriteButton({ slug, title, className }: FavoriteButtonProps) 
       aria-label={active ? `Remove ${title} from favorites` : `Add ${title} to favorites`}
       title={active ? "Remove from favorites" : "Add to favorites"}
       className={cn(
-        "inline-flex size-9 items-center justify-center rounded-control border border-border bg-surface/90 text-muted-foreground backdrop-blur transition-colors hover:border-border-strong hover:text-foreground",
+        "inline-flex size-11 items-center justify-center rounded-control border border-border bg-surface/90 text-muted-foreground backdrop-blur transition-colors hover:border-border-strong hover:text-foreground",
         active && "border-accent/30 bg-accent-soft text-accent-soft-foreground",
         className,
       )}

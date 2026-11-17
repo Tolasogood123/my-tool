@@ -60,7 +60,7 @@ export function ToolOutput({
 
   return (
     <div className={cn("space-y-2", className)}>
-      <div className="flex flex-wrap items-center justify-between gap-2">
+      <div className="tool-actions sticky top-[5.5rem] z-10 -mx-2 flex flex-wrap items-center justify-between gap-2 rounded-control bg-surface/95 px-2 py-2 backdrop-blur sm:static sm:mx-0 sm:bg-transparent sm:p-0">
         <label htmlFor={id} className="text-sm font-medium">
           {label}
         </label>

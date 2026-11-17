@@ -212,8 +212,27 @@
 
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
     -webkit-tap-highlight-color: transparent;
     color-scheme: light;
+    padding-left: env(safe-area-inset-left, 0px);
+    padding-right: env(safe-area-inset-right, 0px);
+    overflow-wrap: break-word;
+  }
+
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="color"]),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+
+  pre {
+    max-width: 100%;
+    overflow-x: auto;
   }
 
   html[data-theme="dark"] {
@@ -329,18 +348,35 @@
     width: 100%;
     margin-inline: auto;
     max-width: 76rem;
-    padding-inline: 1rem;
+    padding-left: calc(1rem + env(safe-area-inset-left, 0px));
+    padding-right: calc(1rem + env(safe-area-inset-right, 0px));
   }
 
   @media (min-width: 640px) {
     .container-page {
-      padding-inline: 1.5rem;
+      padding-left: calc(1.5rem + env(safe-area-inset-left, 0px));
+      padding-right: calc(1.5rem + env(safe-area-inset-right, 0px));
     }
   }
 
   @media (min-width: 1024px) {
     .container-page {
-      padding-inline: 2rem;
+      padding-left: calc(2rem + env(safe-area-inset-left, 0px));
+      padding-right: calc(2rem + env(safe-area-inset-right, 0px));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-page {
+      max-width: 80rem;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .container-page {
+      max-width: 88rem;
+      padding-left: calc(2.5rem + env(safe-area-inset-left, 0px));
+      padding-right: calc(2.5rem + env(safe-area-inset-right, 0px));
     }
   }
 
@@ -640,5 +676,35 @@
   .scrollbar-thin {
     scrollbar-width: thin;
     scrollbar-color: var(--border-strong) transparent;
+  }
+}
+
+/* Accessibility guarantees that must win over component utility classes. */
+@layer utilities {
+  input:not([type="checkbox"]):not([type="radio"]):not([type="range"]):not([type="file"]):not([type="color"]),
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  button,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  div:has(> table) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  @media (max-width: 640px) {
+    div:has(> table)::after {
+      content: "Swipe to see all columns →";
+      display: block;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.7rem;
+      color: var(--subtle-foreground);
+    }
   }
 }

@@ -54,6 +54,12 @@ export function ImageTool({ mode }: { mode: ImageToolMode }) {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const resultUrlRef = useRef("");
+  const cropDragRef = useRef<{
+    clientX: number;
+    clientY: number;
+    x: number;
+    y: number;
+  } | null>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -147,6 +153,38 @@ export function ImageTool({ mode }: { mode: ImageToolMode }) {
 
   const updateCrop = (patch: Partial<CropRect>) => {
     setCrop((current) => ({ ...current, ...patch }));
+  };
+
+  const cropDragStart = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (mode !== "crop" || !original) return;
+    event.currentTarget.setPointerCapture(event.pointerId);
+    cropDragRef.current = {
+      clientX: event.clientX,
+      clientY: event.clientY,
+      x: crop.x,
+      y: crop.y,
+    };
+  };
+
+  const cropDragMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    const start = cropDragRef.current;
+    if (!start || !original) return;
+    const rect = event.currentTarget.getBoundingClientRect();
+    const previewWidth = rect.width || 1;
+    const scale = original.width / previewWidth;
+    const dx = (event.clientX - start.clientX) * scale;
+    const dy = (event.clientY - start.clientY) * scale / (original.width / original.height);
+    updateCrop({
+      x: Math.max(0, Math.min(original.width - crop.width, start.x + dx)),
+      y: Math.max(0, Math.min(original.height - crop.height, start.y + dy)),
+    });
+  };
+
+  const cropDragEnd = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    cropDragRef.current = null;
   };
 
   const applyAspect = (ratio: number | null) => {
@@ -251,7 +289,13 @@ export function ImageTool({ mode }: { mode: ImageToolMode }) {
         <p className="text-xs text-subtle-foreground">{MODES[mode].hint}</p>
       </div>
 
-      <div className="flex min-h-72 flex-col items-center justify-center rounded-card border border-dashed border-border bg-surface-muted p-5">
+      <div
+        className="flex min-h-72 touch-none flex-col items-center justify-center rounded-card border border-dashed border-border bg-surface-muted p-5"
+        onPointerDown={cropDragStart}
+        onPointerMove={cropDragMove}
+        onPointerUp={cropDragEnd}
+        onPointerCancel={cropDragEnd}
+      >
         {result ? (
           <>
             <Image
@@ -260,7 +304,7 @@ export function ImageTool({ mode }: { mode: ImageToolMode }) {
               width={400}
               height={300}
               unoptimized
-              className="max-h-80 w-auto rounded-control border border-border object-contain"
+              className="max-h-80 w-full max-w-full rounded-control border border-border object-contain"
             />
             <p className="mt-3 text-xs text-muted-foreground">
               {result.width} × {result.height} px · {formatBytes(result.blob.size)}
@@ -274,7 +318,7 @@ export function ImageTool({ mode }: { mode: ImageToolMode }) {
               width={400}
               height={300}
               unoptimized
-              className="max-h-80 w-auto rounded-control border border-border object-contain"
+              className="max-h-80 w-full max-w-full rounded-control border border-border object-contain"
             />
             <p className="mt-3 text-xs text-muted-foreground">Original image</p>
           </>

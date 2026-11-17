@@ -106,7 +106,7 @@ export function Dropdown({
           aria-label={label}
           onKeyDown={onMenuKeyDown}
           className={cn(
-            "absolute z-30 mt-2 min-w-48 overflow-hidden rounded-control border border-border bg-surface p-1 shadow-card",
+            "absolute z-30 mt-2 max-h-[60dvh] min-w-48 overflow-auto rounded-control border border-border bg-surface p-1 shadow-card",
             align === "end" ? "right-0" : "left-0",
           )}
         >

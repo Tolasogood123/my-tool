@@ -172,7 +172,8 @@ export function InvoiceGenerator() {
             </div>
           </div>
 
-          <div className="mt-6 overflow-x-auto">
+          <div className="mt-6 scrollbar-thin overflow-x-auto rounded-control border border-border/60 p-2">
+            <p className="mb-2 text-[11px] text-subtle-foreground sm:hidden">Swipe to see all columns →</p>
             <table className="w-full min-w-[420px] text-left text-sm">
               <thead>
                 <tr className="border-b border-border text-xs uppercase text-muted-foreground">
