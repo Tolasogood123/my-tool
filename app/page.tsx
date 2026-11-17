@@ -6,8 +6,10 @@ import { FeaturedAI } from "@/components/home/FeaturedAI";
 import { Hero } from "@/components/home/Hero";
 import { HowItWorks } from "@/components/home/HowItWorks";
 import { LatestGuides } from "@/components/home/LatestGuides";
+import { PersonalRow } from "@/components/home/PersonalRow";
 import { PopularTools } from "@/components/home/PopularTools";
 import { RecentTools } from "@/components/home/RecentTools";
+import { StatsStrip } from "@/components/home/StatsStrip";
 import { WhyChoose } from "@/components/home/WhyChoose";
 import { buttonClassName } from "@/components/ui/Button";
 
@@ -15,10 +17,12 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <StatsStrip />
+      <PersonalRow kind="recent" />
+      <PersonalRow kind="favorites" />
       <PopularTools />
       <CategoryGrid />
       <RecentTools />
-      <FeaturedAI />
       <WhyChoose />
       <HowItWorks />
 
@@ -56,6 +60,7 @@ export default function HomePage() {
 
       <FAQ />
       <LatestGuides />
+      <FeaturedAI />
     </>
   );
 }

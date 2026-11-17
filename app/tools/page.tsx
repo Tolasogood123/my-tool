@@ -42,11 +42,9 @@ export default function AllToolsPage() {
         <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
           All Tools
         </h1>
-        <p className="mt-4 text-base leading-7 text-muted-foreground">
-          Every finished tool in the TolaDev collection, in one list. Search by
-          name or keyword, filter by category, and sort the way you like. Tools
-          that run in your browser keep your files on your device, and tools
-          that need an external service are clearly marked.
+        <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+          Search by name or keyword, filter by category, and sort. Browser tools
+          keep your files on your device; API tools are clearly marked.
         </p>
         <p className="mt-3 text-sm font-medium text-subtle-foreground">
           {count === 0

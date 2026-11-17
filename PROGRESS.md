@@ -123,6 +123,16 @@ Free Tools. Smarter Work. Anywhere.
 - [x] Per-batch blog guides: 11 original 800+ word guides added to `lib/blog.ts` (one per batch), with internal links to their tools
 - [x] Final verification after full integration: `check:registry` 110 tools valid, tsc pass, lint pass (all subagent lint errors fixed), build pass (110 tool pages prerendered)
 
+## UI Refresh (TOLADEV_UI_REFRESH_PROMPT.md)
+
+- [x] Stage 1: design tokens and base components — 13 category accent token sets (light + dark), focus/shadow/radius tokens, upgraded Card/Button/Input/ThemeToggle, new Badge chip component, category-coloured ToolCard and CategoryGrid, new `/design` previews for category accents and chips; tsc/lint/build pass, key pages 200
+- [x] Stage 2: sticky glass header, `/` focus and Ctrl/Cmd+K lazy quick-search palette over real tools, keyboard hint, footer grouped by all 13 real categories + privacy promise + theme toggle
+- [x] Stage 3: homepage reordered (hero + real registry stats strip + recently used/favorites rows hidden when empty + popular + categories + recent + why/how/FAQ/guides), two honest hero CTAs, trust strip reworded for browser tools
+- [x] Stage 4: compact All Tools header, sticky filter bar with category-count chips, 4-column desktop grid, keyword suggestions in empty state, colored category header bands and related-category chips
+- [x] Stage 5: ToolShell title row with category/status badges and favorite button, padded tool card, mobile sticky action bar with real copy-link/favorite/back actions, recently-used recording, existing ad slot kept below the tool
+- [x] Stage 6: QA — all 26 light/dark category color pairs pass AA (4.75:1–11.47:1), 44px mobile tap targets, existing tool skeletons/toasts retained, tsc/lint/build pass; manual browser QA at 360/768/1280/1920px still recommended
+- [ ] Follow-up ideas: real browser Lighthouse run, screenshot review of every page type, optional theme-transition micro-interaction polish
+
 ## Later Phases (do not start without approval)
 
 - [x] Phase 3 PDF, Student, Business, SEO, Social, Productivity tools (25 tools total; all browser-based, full registry content, code-split)

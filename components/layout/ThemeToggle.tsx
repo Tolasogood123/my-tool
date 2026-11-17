@@ -19,15 +19,17 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
       className={cn(
-        "inline-flex size-10 items-center justify-center rounded-control border border-border bg-surface text-foreground transition-colors hover:border-border-strong hover:bg-surface-muted",
+        "group inline-flex size-10 items-center justify-center rounded-control border border-border bg-surface text-foreground transition-all hover:border-border-strong hover:bg-surface-muted active:scale-95",
         className,
       )}
     >
-      {isDark ? (
-        <Sun className="size-4.5" aria-hidden="true" />
-      ) : (
-        <Moon className="size-4.5" aria-hidden="true" />
-      )}
+      <span className="theme-icon inline-flex group-hover:rotate-12">
+        {isDark ? (
+          <Sun className="size-4.5" aria-hidden="true" />
+        ) : (
+          <Moon className="size-4.5" aria-hidden="true" />
+        )}
+      </span>
       <span className="sr-only" suppressHydrationWarning>
         {mounted ? (isDark ? "Light mode available" : "Dark mode available") : ""}
       </span>

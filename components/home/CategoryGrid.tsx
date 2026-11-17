@@ -21,10 +21,11 @@ export function CategoryGrid() {
           {categories.map((category) => (
             <Link
               key={category.id}
+              data-category={category.id}
               href={`/category/${category.id}`}
               className="group card-modern flex items-start gap-3 rounded-card border border-border bg-surface p-5 shadow-soft"
             >
-              <span className="icon-tile flex size-11 shrink-0 items-center justify-center rounded-[0.9rem] transition-transform duration-300 group-hover:scale-105">
+              <span className="cat-icon flex size-11 shrink-0 items-center justify-center rounded-[0.9rem] transition-transform duration-300 group-hover:scale-105">
                 <ToolIcon name={category.icon} />
               </span>
               <span className="min-w-0 flex-1">

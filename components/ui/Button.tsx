@@ -14,7 +14,7 @@ export type ButtonSize = "sm" | "md" | "lg" | "icon";
 const variants: Record<ButtonVariant, string> = {
   primary: "btn-primary border border-transparent",
   secondary:
-    "bg-surface-muted text-foreground hover:bg-border border border-transparent",
+    "bg-surface-muted text-foreground hover:bg-border-strong/60 border border-transparent",
   outline:
     "border border-border bg-surface text-foreground hover:border-border-strong hover:bg-surface-muted",
   ghost:
@@ -46,7 +46,7 @@ export function buttonClassName({
   className?: string;
 }) {
   return cn(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-control font-semibold transition-colors disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-control font-semibold transition-all duration-150 btn-press disabled:pointer-events-none disabled:opacity-50",
     variants[variant],
     sizes[size],
     className,

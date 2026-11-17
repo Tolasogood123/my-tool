@@ -9,6 +9,7 @@ import { EmptyState } from "@/components/ui/EmptyState";
 import { Input, Select } from "@/components/ui/Input";
 import { useDebounce } from "@/hooks/useDebounce";
 import { categories } from "@/lib/registry/categories";
+import { getCategoriesWithCounts } from "@/lib/registry/helpers";
 import { searchTools } from "@/lib/registry/helpers";
 import type { SortKey } from "@/lib/registry/helpers";
 import type { CategoryId } from "@/types/category";
@@ -44,6 +45,7 @@ export function ToolSearch({ fixedCategory }: ToolSearchProps) {
   );
 
   const hasFilters = query.trim() !== "" || (!fixedCategory && category !== "all");
+  const categoryCounts = getCategoriesWithCounts();
 
   const reset = () => {
     setQuery("");
@@ -53,7 +55,8 @@ export function ToolSearch({ fixedCategory }: ToolSearchProps) {
 
   return (
     <div>
-      <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
+      <div className="sticky top-[4.5rem] z-20 -mx-4 border-y border-border/60 bg-background/90 px-4 py-3 backdrop-blur-xl sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
+        <div className="flex flex-col gap-3 lg:flex-row lg:items-center">
         <div className="relative flex-1">
           <label htmlFor="tool-search" className="sr-only">
             Search tools
@@ -127,6 +130,34 @@ export function ToolSearch({ fixedCategory }: ToolSearchProps) {
             </Button>
           ) : null}
         </div>
+        </div>
+
+        {!fixedCategory ? (
+          <div className="scrollbar-thin mt-3 flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Filter by category">
+            <button
+              type="button"
+              onClick={() => setCategory("all")}
+              aria-pressed={category === "all"}
+              className={`chip ${category === "all" ? "border-accent/40 bg-accent-soft text-accent-soft-foreground" : "chip-neutral"}`}
+            >
+              All tools
+            </button>
+            {categoryCounts.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                data-category={item.id}
+                onClick={() => setCategory(item.id)}
+                aria-pressed={category === item.id}
+                className={`chip ${category === item.id ? "border-accent/40 bg-accent-soft text-accent-soft-foreground" : ""}`}
+              >
+                <span className="cat-dot size-1.5 shrink-0 rounded-full" aria-hidden="true" />
+                {item.name}
+                <span className="opacity-60">{item.count}</span>
+              </button>
+            ))}
+          </div>
+        ) : null}
       </div>
 
       <p aria-live="polite" className="mt-5 text-sm text-muted-foreground">
@@ -141,13 +172,22 @@ export function ToolSearch({ fixedCategory }: ToolSearchProps) {
           title="No tools match that search"
           description="Try a different keyword, choose another category, or reset the filters. Only finished tools are shown."
           action={
-            <Button variant="outline" onClick={reset}>
-              Reset filters
-            </Button>
+            <div className="flex flex-col items-center gap-3">
+              <div className="flex flex-wrap justify-center gap-2">
+                {["json", "image", "password"].map((term) => (
+                  <Button key={term} type="button" size="sm" variant="outline" onClick={() => setQuery(term)}>
+                    Try “{term}”
+                  </Button>
+                ))}
+              </div>
+              <Button variant="ghost" onClick={reset}>
+                Clear filters
+              </Button>
+            </div>
           }
         />
       ) : (
-        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {results.map((tool) => (
             <ToolCard key={tool.slug} tool={tool} />
           ))}

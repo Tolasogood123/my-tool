@@ -100,7 +100,7 @@ async function CategoryPageContent({ params }: CategoryPageProps) {
   const otherCategories = categories.filter((item) => item.id !== category.id);
 
   return (
-    <div className="container-page py-12 lg:py-16">
+    <div className="container-page py-12 lg:py-16" data-category={category.id}>
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
@@ -109,21 +109,27 @@ async function CategoryPageContent({ params }: CategoryPageProps) {
         ]}
       />
 
-      <header className="mt-6 max-w-3xl">
-        <span className="flex size-12 items-center justify-center rounded-card bg-accent-soft text-accent-soft-foreground">
-          <ToolIcon name={category.icon} className="size-6" />
-        </span>
-        <h1 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
-          {category.name} Tools
-        </h1>
-        <p className="mt-4 text-base leading-7 text-muted-foreground">
-          {category.intro}
-        </p>
-        <p className="mt-3 text-sm font-medium text-subtle-foreground">
-          {count === 0
-            ? "No tools in this category yet — new tools are added as soon as they are fully tested."
-            : `${count} ${count === 1 ? "tool" : "tools"} in this category.`}
-        </p>
+      <header className="relative mt-6 max-w-4xl overflow-hidden rounded-card border border-border bg-surface p-6 shadow-soft sm:p-8">
+        <div className="cat-wash absolute inset-0" aria-hidden="true" />
+        <div className="relative flex flex-wrap items-start gap-4">
+          <span className="cat-icon flex size-12 shrink-0 items-center justify-center rounded-card">
+            <ToolIcon name={category.icon} className="size-6" />
+          </span>
+          <div className="min-w-0 flex-1">
+            <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+              {category.name} Tools
+            </h1>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground sm:text-base">
+              {category.intro}
+            </p>
+            <p className="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-accent-soft-foreground">
+              <span className="cat-dot size-1.5 rounded-full" aria-hidden="true" />
+              {count === 0
+                ? "No tools ready yet — new tools appear here after testing"
+                : `${count} ${count === 1 ? "tool" : "tools"} in this category`}
+            </p>
+          </div>
+        </div>
       </header>
 
       <div className="mt-8">
@@ -158,8 +164,10 @@ async function CategoryPageContent({ params }: CategoryPageProps) {
             <li key={item.id}>
               <Link
                 href={`/category/${item.id}`}
-                className="inline-flex items-center gap-2 rounded-pill border border-border bg-surface px-3.5 py-2 text-sm font-medium text-muted-foreground transition-colors hover:border-border-strong hover:text-foreground"
+                data-category={item.id}
+                className="chip py-2 text-sm transition-transform hover:-translate-y-0.5"
               >
+                <span className="cat-dot size-1.5 shrink-0 rounded-full" aria-hidden="true" />
                 {item.name}
               </Link>
             </li>

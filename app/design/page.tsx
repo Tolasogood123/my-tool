@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import { ThemeToggle } from "@/components/layout/ThemeToggle";
+import { Badge } from "@/components/ui/Badge";
+import { ToolIcon } from "@/components/ui/ToolIcon";
+import { getCategoriesWithCounts } from "@/lib/registry/helpers";
 import { DesignShowcase } from "./DesignShowcase";
 
 export const metadata: Metadata = {
@@ -43,6 +46,8 @@ function Section({
 }
 
 export default function DesignPage() {
+  const categories = getCategoriesWithCounts();
+
   return (
     <div className="container-page py-12">
       <div className="flex flex-wrap items-start justify-between gap-4">
@@ -80,6 +85,47 @@ export default function DesignPage() {
               </p>
             </div>
           ))}
+        </div>
+      </Section>
+
+      <Section
+        title="Category accents"
+        description="Every category has its own soft accent, with matching light and dark values. Counts come from the live registry."
+      >
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map((category) => (
+            <div
+              key={category.id}
+              data-category={category.id}
+              className="flex items-center gap-3 rounded-card border border-border bg-surface p-4 shadow-soft"
+            >
+              <span className="cat-icon flex size-10 shrink-0 items-center justify-center rounded-control">
+                <ToolIcon name={category.icon} />
+              </span>
+              <div className="min-w-0">
+                <p className="truncate text-sm font-semibold">{category.name}</p>
+                <span className="mt-1 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+                  <span className="cat-dot size-1.5 rounded-full" aria-hidden="true" />
+                  {category.count} {category.count === 1 ? "tool" : "tools"}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section
+        title="Chips and status badges"
+        description="Compact labels from the Badge component; category chips use the matching accent."
+      >
+        <div className="flex flex-wrap items-center gap-3 rounded-card border border-border bg-surface p-6 shadow-soft">
+          <Badge category="developer" dot>Developer</Badge>
+          <Badge category="ai-writing" dot>AI &amp; Writing</Badge>
+          <Badge variant="success">Ready</Badge>
+          <Badge variant="warning">Needs API</Badge>
+          <Badge variant="danger">Error</Badge>
+          <Badge variant="accent">Runs in browser</Badge>
+          <Badge variant="neutral">Free</Badge>
         </div>
       </Section>
 

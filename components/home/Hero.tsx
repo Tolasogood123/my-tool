@@ -1,6 +1,6 @@
 import { ArrowRight, Check, Search, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { Button } from "@/components/ui/Button";
+import { Button, buttonClassName } from "@/components/ui/Button";
 
 const quickLinks = [
   { label: "Image Compressor", href: "/tools/image-compressor" },
@@ -9,7 +9,7 @@ const quickLinks = [
   { label: "Password Generator", href: "/tools/password-generator" },
 ];
 
-const trustPoints = ["No sign-up", "Files stay on your device", "Free forever"];
+const trustPoints = ["No sign-up", "Browser tools keep files local", "Free forever"];
 
 export function Hero() {
   return (
@@ -60,6 +60,19 @@ export function Hero() {
               Search
             </Button>
           </form>
+
+          <div className="fade-up mt-5 flex flex-wrap items-center justify-center gap-3">
+            <Link href="/tools" className={buttonClassName({ size: "lg" })}>
+              Explore all tools
+              <ArrowRight className="size-4" aria-hidden="true" />
+            </Link>
+            <Link
+              href="/#categories"
+              className={buttonClassName({ size: "lg", variant: "outline" })}
+            >
+              Browse categories
+            </Link>
+          </div>
 
           <div className="fade-up mt-6 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
             <span className="font-semibold text-subtle-foreground">Popular:</span>

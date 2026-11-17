@@ -2,9 +2,13 @@ import Link from "next/link";
 import { ArrowUpRight, Radio } from "lucide-react";
 import type { ReactNode } from "react";
 import { AdSlot } from "@/components/tool/AdSlot";
+import { RecordRecentTool } from "@/components/tool/RecordRecentTool";
+import { ToolActions } from "@/components/tool/ToolActions";
 import { Breadcrumbs } from "@/components/layout/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { ToolCard } from "@/components/search/ToolCard";
+import { Badge } from "@/components/ui/Badge";
+import { FavoriteButton } from "@/components/search/FavoriteButton";
 import { ToolIcon } from "@/components/ui/ToolIcon";
 import { getCategory } from "@/lib/registry/categories";
 import { getRelated } from "@/lib/registry/helpers";
@@ -21,7 +25,7 @@ export function ToolShell({ tool, children }: ToolShellProps) {
   const related = getRelated(tool);
 
   return (
-    <div className="container-page py-10 lg:py-14">
+    <div className="container-page py-10 lg:py-14" data-category={tool.category}>
       <JsonLd
         data={[
           toolJsonLd(tool),
@@ -43,31 +47,44 @@ export function ToolShell({ tool, children }: ToolShellProps) {
         ]}
       />
 
-      <header className="mt-6 max-w-3xl">
+      <RecordRecentTool slug={tool.slug} />
+
+      <header className="mt-6 max-w-4xl">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="flex size-12 items-center justify-center rounded-card bg-accent-soft text-accent-soft-foreground">
+          <span className="cat-icon flex size-12 items-center justify-center rounded-card">
             <ToolIcon name={tool.icon} className="size-6" />
           </span>
-          {tool.status === "needs-api" ? (
-            <span className="inline-flex items-center gap-1.5 rounded-pill border border-warning/30 bg-warning-soft px-3 py-1 text-xs font-semibold text-warning">
-              <Radio className="size-3.5" aria-hidden="true" />
-              Needs an external API
-            </span>
-          ) : null}
+          <div className="flex flex-wrap items-center gap-2">
+            <Badge category={tool.category} dot>
+              {category.name}
+            </Badge>
+            {tool.status === "needs-api" ? (
+              <Badge variant="warning">
+                <Radio className="size-3" aria-hidden="true" />
+                Needs API
+              </Badge>
+            ) : (
+              <Badge variant="success">Runs in browser</Badge>
+            )}
+          </div>
+          <FavoriteButton
+            slug={tool.slug}
+            title={tool.title}
+            className="ml-auto size-11"
+          />
         </div>
-        <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+        <h1 className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">
           {tool.title}
         </h1>
         <p className="mt-3 text-base leading-7 text-muted-foreground">
           {tool.description}
         </p>
-        <p className="mt-3 text-sm font-medium text-subtle-foreground">
-          {category.name} · Added {tool.addedAt}
-        </p>
       </header>
 
       <section aria-label={`${tool.title} workspace`} className="mt-8">
-        {children}
+        <div className="rounded-card border border-border bg-surface p-4 shadow-soft sm:p-6">
+          {children}
+        </div>
       </section>
 
       <AdSlot
@@ -173,6 +190,8 @@ export function ToolShell({ tool, children }: ToolShellProps) {
           )}
         </aside>
       </div>
+
+      <ToolActions slug={tool.slug} title={tool.title} />
     </div>
   );
 }

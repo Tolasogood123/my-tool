@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, Radio } from "lucide-react";
 import { FavoriteButton } from "@/components/search/FavoriteButton";
+import { Badge } from "@/components/ui/Badge";
 import { ToolIcon } from "@/components/ui/ToolIcon";
 import { getCategory } from "@/lib/registry/categories";
 import { cn } from "@/lib/utils/cn";
@@ -16,6 +17,7 @@ export function ToolCard({ tool, className }: ToolCardProps) {
 
   return (
     <div
+      data-category={tool.category}
       className={cn(
         "group card-modern relative rounded-card border border-border bg-surface shadow-soft hover:shadow-card",
         className,
@@ -27,14 +29,14 @@ export function ToolCard({ tool, className }: ToolCardProps) {
         aria-label={`Open ${tool.title}`}
       >
         <div className="flex items-start justify-between gap-3 pr-10">
-          <span className="icon-tile flex size-11 items-center justify-center rounded-[0.9rem] transition-transform duration-300 group-hover:scale-105">
+          <span className="cat-icon flex size-11 items-center justify-center rounded-[0.9rem] transition-transform duration-300 group-hover:scale-105">
             <ToolIcon name={tool.icon} />
           </span>
           {tool.status === "needs-api" ? (
-            <span className="inline-flex items-center gap-1 rounded-pill border border-warning/30 bg-warning-soft px-2 py-1 text-[11px] font-semibold text-warning">
+            <Badge variant="warning">
               <Radio className="size-3" aria-hidden="true" />
               Needs API
-            </span>
+            </Badge>
           ) : null}
         </div>
 
@@ -49,9 +51,9 @@ export function ToolCard({ tool, className }: ToolCardProps) {
           {tool.description}
         </p>
         <p className="mt-auto pt-5">
-          <span className="inline-flex rounded-pill bg-surface-muted px-2.5 py-1 text-[11px] font-semibold text-subtle-foreground">
+          <Badge category={tool.category} dot>
             {category.name}
-          </span>
+          </Badge>
         </p>
       </Link>
       <div className="absolute right-4 top-4 z-10">

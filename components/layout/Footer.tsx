@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { SITE, footerLinks } from "@/constants/site";
+import { categories } from "@/lib/registry/categories";
 import { Logo } from "./Logo";
+import { ThemeToggle } from "./ThemeToggle";
 
 async function getCurrentYear(): Promise<number> {
   "use cache";
@@ -26,8 +28,25 @@ export async function Footer() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-            {footerLinks.map((group) => (
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:grid-cols-4">
+            <div>
+              <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-subtle-foreground">
+                Tools by category
+              </h2>
+              <ul className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-1">
+                {categories.map((category) => (
+                  <li key={category.id}>
+                    <Link
+                      href={`/category/${category.id}`}
+                      className="inline-block rounded-control px-1.5 py-0.5 text-sm text-muted-foreground transition-all hover:bg-accent-soft hover:text-accent"
+                    >
+                      {category.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            {footerLinks.slice(1).map((group) => (
               <div key={group.title}>
                 <h2 className="text-xs font-semibold uppercase tracking-[0.16em] text-subtle-foreground">
                   {group.title}
@@ -53,7 +72,11 @@ export async function Footer() {
           <p>
             © {year} {SITE.name}. All rights reserved.
           </p>
-          <p>Free tools for everyone, everywhere.</p>
+          <p className="inline-flex items-center gap-2">
+            <span className="size-1.5 rounded-full bg-success" aria-hidden="true" />
+            Your files and text stay on your device.
+          </p>
+          <ThemeToggle />
         </div>
       </div>
     </footer>

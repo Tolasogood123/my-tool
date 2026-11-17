@@ -3,6 +3,7 @@ import Link from "next/link";
 import { mainNav } from "@/constants/site";
 import { Logo } from "./Logo";
 import { MobileNav } from "./MobileNav";
+import { QuickSearch } from "./QuickSearch";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
@@ -42,8 +43,11 @@ export function Header() {
               name="q"
               type="search"
               placeholder="Search tools..."
-              className="h-10 w-full rounded-pill border border-border/80 bg-surface-muted/70 pl-9 pr-3 text-sm placeholder:text-subtle-foreground transition-all focus-visible:border-accent focus-visible:bg-surface focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/10"
+              className="h-10 w-full rounded-pill border border-border/80 bg-surface-muted/70 pl-9 pr-12 text-sm placeholder:text-subtle-foreground transition-all focus-visible:border-accent focus-visible:bg-surface focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-accent/10"
             />
+            <kbd className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 rounded-[0.4rem] border border-border bg-surface px-1.5 py-0.5 font-mono text-[10px] font-semibold text-subtle-foreground">
+              /
+            </kbd>
           </form>
           <Link
             href="/tools"
@@ -51,6 +55,7 @@ export function Header() {
           >
             Explore tools
           </Link>
+          <QuickSearch />
           <ThemeToggle />
           <MobileNav links={mainNav} />
         </div>

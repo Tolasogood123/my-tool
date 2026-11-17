@@ -6,7 +6,7 @@ import type {
 import { cn } from "@/lib/utils/cn";
 
 const base =
-  "w-full rounded-control border border-border bg-surface text-sm text-foreground placeholder:text-subtle-foreground transition-colors focus-visible:border-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/25 disabled:cursor-not-allowed disabled:opacity-60 aria-invalid:border-danger";
+  "control w-full rounded-control border border-border bg-surface text-sm text-foreground placeholder:text-subtle-foreground disabled:cursor-not-allowed disabled:opacity-60 aria-invalid:border-danger";
 
 export function Input({
   className,
