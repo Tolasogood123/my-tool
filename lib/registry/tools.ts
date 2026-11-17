@@ -1,10 +1,28 @@
 import type { Tool } from "@/types/tool";
 import { phase3Tools } from "./tools-phase3";
 import { phase4Tools } from "./tools-phase4";
+import { stage3Round1Tools } from "./tools-stage3-round1";
+import { stage3Round2Tools } from "./tools-stage3-round2";
+import { stage3Round3Tools } from "./tools-stage3-round3";
+import { stage3Round4Tools } from "./tools-stage3-round4";
+import { stage3Round5Tools } from "./tools-stage3-round5";
+import { stage3Round6Tools } from "./tools-stage3-round6";
+import { stage3Round7Tools } from "./tools-stage3-round7";
+import { stage3Round8Tools } from "./tools-stage3-round8";
+import { stage3Round9Tools } from "./tools-stage3-round9";
 
 export const tools: Tool[] = [
   ...phase3Tools,
   ...phase4Tools,
+  ...stage3Round1Tools,
+  ...stage3Round2Tools,
+  ...stage3Round3Tools,
+  ...stage3Round4Tools,
+  ...stage3Round5Tools,
+  ...stage3Round6Tools,
+  ...stage3Round7Tools,
+  ...stage3Round8Tools,
+  ...stage3Round9Tools,
   {
     slug: "image-compressor",
     title: "Image Compressor",
@@ -53,6 +71,7 @@ export const tools: Tool[] = [
           q: "Does compression change the image dimensions?",
           a: "No, the pixel width and height stay the same. Use the Image Resizer when you need different dimensions.",
         },
+        { q: "Will compressing remove embedded location data?", a: "Canvas re-encoding writes fresh pixels, so most embedded metadata is dropped. If metadata removal is the main goal, use the EXIF Remover tool instead." },
       ],
     },
   },
@@ -104,6 +123,7 @@ export const tools: Tool[] = [
           q: "What is the maximum image size?",
           a: "Uploads are limited to 20 MB. Very large pixel dimensions may also exceed your device's canvas limits, so the tool reports a clear error instead of failing silently.",
         },
+        { q: "Can I resize by percentage instead of pixels?", a: "Yes. The 25%, 50%, 75%, 100%, and 150% preset buttons scale the image while keeping the aspect ratio locked." },
       ],
     },
   },
@@ -155,6 +175,7 @@ export const tools: Tool[] = [
           q: "Can I use the code in print?",
           a: "Yes. PNG output works in most print layouts. For very large banners, generate a larger size so the modules stay sharp.",
         },
+        { q: "Can I print the downloaded PNG?", a: "Yes. Generate a large image such as 1024 px and place it without stretching. Keep a light border around the code so scanners can locate it." },
       ],
     },
   },
@@ -206,6 +227,7 @@ export const tools: Tool[] = [
           q: "Why does my JSON fail to parse?",
           a: "The common causes are trailing commas, single quotes, unquoted keys, and comments. Standard JSON does not allow them. The error message points to the position to check.",
         },
+        { q: "Does formatting change key order?", a: "No. JavaScript preserves insertion order for string keys. Integer-like keys are the exception and are always sorted numerically by the language." },
       ],
     },
   },
@@ -257,6 +279,7 @@ export const tools: Tool[] = [
           q: "Does it check JSON Schema?",
           a: "No. This tool checks JSON syntax only. Schema validation against a specific structure is a separate, more advanced feature.",
         },
+        { q: "Can it validate JSON Lines files?", a: "No. JSON Lines has one JSON value per line, which is not a single valid JSON document. Validate each line separately." },
       ],
     },
   },
@@ -308,6 +331,7 @@ export const tools: Tool[] = [
           q: "Does it support Khmer text?",
           a: "Yes. The tool converts text to UTF-8 bytes before encoding, so Khmer and other non-Latin scripts are preserved.",
         },
+        { q: "Why does decoding fail on text I copied?", a: "Line breaks are ignored, but stray characters such as smart quotes or spaces inside the payload are not. Copy only the Base64 characters." },
       ],
     },
   },
@@ -359,6 +383,7 @@ export const tools: Tool[] = [
           q: "What does URI malformed mean?",
           a: "The input contains a percent sign that is not followed by two valid hexadecimal digits. Fix or remove the broken sequence before decoding.",
         },
+        { q: "Should I encode a whole URL in component mode?", a: "No. Component mode encodes separators such as the colon and slashes, which breaks the link. Use full-URL mode for complete addresses." },
       ],
     },
   },
@@ -410,6 +435,7 @@ export const tools: Tool[] = [
           q: "Does the tool work with Khmer text?",
           a: "Yes. It uses Intl.Segmenter when supported, which finds word boundaries in Khmer without relying on spaces. Older browsers fall back to a simpler whitespace count.",
         },
+        { q: "Does it count words inside code or Markdown?", a: "Yes. It analyzes every word in the editor, including code and markup. Paste only the prose if you need a cleaner count." },
       ],
     },
   },
@@ -461,6 +487,7 @@ export const tools: Tool[] = [
           q: "Does it work with Khmer text?",
           a: "Khmer has no letter case, so changing case leaves Khmer characters unchanged. Latin text in the same input is still converted normally.",
         },
+        { q: "Does title case lowercase words like 'and'?", a: "No. It capitalizes each word-like token uniformly. Adjust the result manually if your style guide requires lowercase conjunctions." },
       ],
     },
   },
@@ -512,6 +539,7 @@ export const tools: Tool[] = [
           q: "How do I calculate a discount?",
           a: "Use the first mode: enter the discount percentage and the original price. Subtract the result from the original price to get the sale price.",
         },
+        { q: "How do I find the price before a discount?", a: "Use the 'X is what percent of Y' mode with the sale price and remaining percentage, or the Discount Calculator's reverse mode." },
       ],
     },
   },
@@ -563,6 +591,7 @@ export const tools: Tool[] = [
           q: "Can I calculate age on a future date?",
           a: "Yes. Change the reference date to any date after the birth date. The result shows the age at that point in time.",
         },
+        { q: "Does the countdown depend on my time zone?", a: "Dates are compared at UTC midnight, so the day count stays consistent regardless of your device's time zone." },
       ],
     },
   },
@@ -614,6 +643,7 @@ export const tools: Tool[] = [
           q: "Does it calculate cumulative GPA?",
           a: "You can include every completed course to estimate a cumulative GPA, or only this semester's courses for a term GPA.",
         },
+        { q: "Can I use plus and minus letter grades?", a: "Yes. The menu includes A−, B+, B−, C+, C−, D+, and D− with standard 4.0-scale point values." },
       ],
     },
   },
@@ -665,6 +695,7 @@ export const tools: Tool[] = [
           q: "Are generated passwords saved?",
           a: "No. They exist only in the page until you navigate away. Copy the password into a trusted password manager before leaving.",
         },
+        { q: "Can I retrieve a generated password later?", a: "No. Nothing is stored. Copy it into a password manager immediately, because regenerating or leaving the page loses it." },
       ],
     },
   },
@@ -716,6 +747,7 @@ export const tools: Tool[] = [
           q: "Are UUIDs guessable?",
           a: "Version 4 UUIDs are random, but they are identifiers, not secrets. Do not use a UUID as an authentication token or password.",
         },
+        { q: "Are generated UUIDs sequential?", a: "No. Version 4 UUIDs are random and carry no ordering. Do not use them to sort records by creation time." },
       ],
     },
   },
@@ -767,6 +799,7 @@ export const tools: Tool[] = [
           q: "Will my draft be saved if I close the page?",
           a: "Not automatically. Copy or download your Markdown before leaving. Storing drafts locally could be added later as an explicit, opt-in feature.",
         },
+        { q: "Can I paste raw HTML into the editor?", a: "The preview sanitizer removes scripts and event handlers before display. Simple HTML may still be rendered by the Markdown parser, so review the result." },
       ],
     },
   },

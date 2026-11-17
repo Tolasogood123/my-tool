@@ -42,6 +42,76 @@ Free Tools. Smarter Work. Anywhere.
 - [x] 14. UUID Generator
 - [x] 15. Markdown Editor
 
+## Stage 3: Continue Building Tools (TOLADEV_CONTINUE_PROMPT.md)
+
+### Round 1 (done)
+
+- [x] Text Diff Checker (`/tools/text-diff-checker`) — LCS line diff in `lib/utils/diff.ts`, added/removed/unchanged counts, line numbers, copy/download/reset
+- [x] Regex Tester (`/tools/regex-tester`) — `lib/utils/regex.ts`, flags g/i/m/s/u, match index/length/groups/named groups, invalid-pattern errors, 200-match cap, copy/download/reset
+- [x] Unix Timestamp Converter (`/tools/unix-timestamp-converter`) — `lib/utils/timestamp.ts`, seconds/ms ↔ date, ISO/UTC/local/relative output, negative and out-of-range handling, copy/download/reset
+- [x] Registry entries with 4 FAQs each, 4 how-to steps, 4 benefits, valid related slugs; `check:registry` passes for 31 tools
+- [x] Verification: tsc pass, lint pass, build pass (31 tool pages prerendered, sitemap now 53 URLs)
+
+### Round 2 (done)
+
+- [x] CSV to JSON (`/tools/csv-to-json`) — quoted fields, escaped quotes, delimiters, optional headers, duplicate-header handling
+- [x] JSON to CSV (`/tools/json-to-csv`) — arrays of objects/arrays, escaping, copy/download/reset
+- [x] JWT Decoder (`/tools/jwt-decoder`) — decode-only, header/payload JSON, iat/exp dates, explicit "does not verify signature" warning
+- [x] Verification: tsc pass, lint pass, build pass; 34 tools total, `check:registry` valid
+
+### Round 3 (done)
+
+- [x] CGPA Calculator (`/tools/cgpa-calculator`) — credit-weighted multi-semester CGPA with add/remove rows
+- [x] Grade Calculator (`/tools/grade-calculator`) — weighted assessment grade, per-item contributions, total-weight warning
+- [x] Pomodoro Timer (`/tools/pomodoro-timer`) — focus/short/long intervals, pause/reset, completion tone, sessions counter
+- [x] Verification: tsc pass, lint pass, build pass; 37 tools total, `check:registry` valid
+
+### Round 4 (done)
+
+- [x] Discount Calculator (`/tools/discount-calculator`) — forward/reverse discount, savings and sale price
+- [x] VAT Calculator (`/tools/vat-calculator`) — add/remove user-supplied VAT rate, net/VAT/gross breakdown
+- [x] Skipped: Profit Margin Calculator — already `ready` from Phase 3
+- [x] Verification: tsc pass, lint pass, build pass; 39 tools total, `check:registry` valid
+
+### Round 5 (done)
+
+- [x] Loan Calculator (`/tools/loan-calculator`) — amortized monthly payment, total interest and repayment
+- [x] Compound Interest Calculator (`/tools/compound-interest-calculator`) — annual/monthly/daily compounding, final amount and interest
+- [x] Tip / Split Bill Calculator (`/tools/tip-split-calculator`) — presets, custom tip, equal split with per-person amount
+- [x] Verification: tsc pass, lint pass, build pass; 42 tools total, `check:registry` valid
+
+### Round 6 (done)
+
+- [x] Image to WebP / PNG / JPG (`/tools/image-format-converter`) — canvas re-encode with quality control
+- [x] Image Cropper (`/tools/image-cropper`) — pixel crop with aspect presets and validation
+- [x] EXIF Remover (`/tools/exif-remover`) — metadata removal by re-encoding, with honest limitation note
+- [x] Verification: tsc pass, lint pass, build pass; 45 tools total, `check:registry` valid
+
+### Round 7 (done)
+
+- [x] JPG to PDF (`/tools/jpg-to-pdf`) — image-to-PDF pages with reordering, validation and local `pdf-lib` assembly
+- [x] Skipped: PDF Merge and PDF Split — already `ready` from Phase 3
+- [x] Verification: tsc pass, lint pass, build pass; 46 tools total, `check:registry` valid
+
+### Round 8 (done)
+
+- [x] Open Graph Generator (`/tools/open-graph-generator`) — escaped OG/Twitter tags with approximate link-card preview
+- [x] Robots.txt Generator (`/tools/robots-generator`) — allow/disallow rules, sitemap and crawl delay
+- [x] Schema Markup Generator (`/tools/schema-markup-generator`) — WebSite/Organization/BlogPosting/FAQPage JSON-LD with escaped output
+- [x] Verification: tsc pass, lint pass, build pass; 49 tools total, `check:registry` valid
+
+### Round 9 (done)
+
+- [x] Readability Score (`/tools/readability-score`) — Flesch Reading Ease + grade level, live counts and advice, English-only with clear error
+- [x] Skipped: Color Contrast Checker and Social Caption Counter — already `ready`
+- [x] Verification: tsc pass, lint pass, build pass; 50 tools total, `check:registry` valid
+
+### Stage 3 complete
+
+- [x] All 9 rounds processed; 22 new tools built (3+3+3+2+3+3+1+3+1), bringing the registry from 28 to 50 tools
+- [x] Skipped 5 planned Stage 3 entries because they were already `ready`: Profit Margin Calculator, PDF Merge, PDF Split, Color Contrast Checker, Social Caption Counter (the "Social Media Character Counter" entry)
+- [x] Final verification: `npm run check:registry` 50 tools valid, tsc pass, lint pass, build pass
+
 ## Later Phases (do not start without approval)
 
 - [x] Phase 3 PDF, Student, Business, SEO, Social, Productivity tools (25 tools total; all browser-based, full registry content, code-split)
@@ -58,8 +128,8 @@ Free Tools. Smarter Work. Anywhere.
   - [x] SEO: unique titles/canonical/OG on all public pages, registry-driven sitemap (50 URLs) and robots, `/design` noindex
   - [x] Accessibility: skip link, focus states, native dialog, arrow-key dropdown, WCAG contrast audit (fixed light-mode subtle text 3.55:1 → 4.75:1)
   - [x] Security: security response headers verified in production responses; AI key server-only; rate limiting; `.env*` gitignored; Markdown/JSON-LD sanitized
-  - [x] Performance: code-split tools via `next/dynamic`, `next/font`, `next/image`, static prerendering of 28 tool pages
-  - [ ] Vercel deployment: needs the project owner's Vercel account/credentials (cannot be done from this session)
+  - [x] Performance: code-split tools via `next/dynamic`, `next/font`, `next/image`, static prerendering of 31 tool pages
+- [ ] Deployment: GitHub repo `Tolasogood123/my-tool` created and `main` pushed; Cloudflare Pages deployment NOT done — `wrangler whoami` requires the owner to run `npx wrangler login` first. A Next.js 16 app with `cacheComponents` and `/api/ai` needs the OpenNext Cloudflare adapter, not a plain static export.
 
 ## Notes
 
@@ -73,6 +143,10 @@ Free Tools. Smarter Work. Anywhere.
 - PDF tools use `pdf-lib` (added dependency) entirely in the browser; no uploads, no email, no watermark.
 - `pdf-documents`, `web-seo` and `social-media` categories now have real tools; `video-audio` and `e-commerce` remain honestly empty ("tools coming soon").
 - Visual refresh: indigo/violet design system, aurora hero, glass surfaces, gradient buttons/logo and glowing cards in `app/globals.css` + shared layout/home components; light/dark contrast checked; Next 16 instant-shell warnings on dynamic routes fixed with Suspense boundaries.
-- `planned` tools never appear in search, sitemap, or generated pages.
+- Round 1 hand checks: diff of 'hello/world' → 'hello/there/world' = +1 added, 0 removed; regex `([a-z]+)-(\d+)` on 'ab-12 cd-34' = 2 matches with groups ['ab','12'] and ['cd','34']; timestamp 1700000000 s → 2023-11-14T22:13:20.000Z and 0 s → 1970-01-01T00:00:00.000Z.
+- Current state after Stage 3: 50 published tools (47 `ready`, 3 `needs-api`), 50 tool pages prerendered, sitemap contains 72 URLs (8 static + 13 categories + 50 tools + 1 guide).
+- Known issue resolved in this session: the 28 pre-existing tools each had 3 FAQs; a fourth original FAQ was added to each, so all 50 tools now have exactly 4 FAQs (200 total) and satisfy TOLADEV_CONTINUE_PROMPT.md rule 4.
+- Automated browser interaction tests are still not possible from this environment (canvas image tools, PDF assembly, timer audio) — a manual pass is recommended.
+- Stage 2 was not executed in this session beyond the initial audit query; `PROGRESS.md` reflects actual current state, not the assumed one.
 - `needs-api` tools show a clear notice; no fake output.
 - All processing happens in the browser unless a tool is explicitly `needs-api`.

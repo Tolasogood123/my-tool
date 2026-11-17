@@ -156,6 +156,82 @@ const toolComponents: Record<string, ComponentType> = {
       default: m.AiTitleGenerator,
     })),
   ),
+  "text-diff-checker": load(() =>
+    import("@/components/tools/TextDiffChecker").then((m) => ({
+      default: m.TextDiffChecker,
+    })),
+  ),
+  "regex-tester": load(() =>
+    import("@/components/tools/RegexTester").then((m) => ({
+      default: m.RegexTester,
+    })),
+  ),
+  "unix-timestamp-converter": load(() =>
+    import("@/components/tools/UnixTimestampConverter").then((m) => ({
+      default: m.UnixTimestampConverter,
+    })),
+  ),
+  "csv-to-json": load(() =>
+    import("@/components/tools/CsvToJson").then((m) => ({ default: m.CsvToJson })),
+  ),
+  "json-to-csv": load(() =>
+    import("@/components/tools/JsonToCsv").then((m) => ({ default: m.JsonToCsv })),
+  ),
+  "jwt-decoder": load(() =>
+    import("@/components/tools/JwtDecoder").then((m) => ({ default: m.JwtDecoder })),
+  ),
+  "cgpa-calculator": load(() =>
+    import("@/components/tools/CgpaCalculator").then((m) => ({ default: m.CgpaCalculator })),
+  ),
+  "grade-calculator": load(() =>
+    import("@/components/tools/GradeCalculator").then((m) => ({ default: m.GradeCalculator })),
+  ),
+  "pomodoro-timer": load(() =>
+    import("@/components/tools/PomodoroTimer").then((m) => ({ default: m.PomodoroTimer })),
+  ),
+  "discount-calculator": load(() =>
+    import("@/components/tools/DiscountCalculator").then((m) => ({ default: m.DiscountCalculator })),
+  ),
+  "vat-calculator": load(() =>
+    import("@/components/tools/VatCalculator").then((m) => ({ default: m.VatCalculator })),
+  ),
+  "loan-calculator": load(() =>
+    import("@/components/tools/LoanCalculator").then((m) => ({ default: m.LoanCalculator })),
+  ),
+  "compound-interest-calculator": load(() =>
+    import("@/components/tools/CompoundInterestCalculator").then((m) => ({
+      default: m.CompoundInterestCalculator,
+    })),
+  ),
+  "tip-split-calculator": load(() =>
+    import("@/components/tools/TipSplitCalculator").then((m) => ({ default: m.TipSplitCalculator })),
+  ),
+  "image-format-converter": load(() =>
+    import("@/components/tools/ImageFormatConverter").then((m) => ({ default: m.ImageFormatConverter })),
+  ),
+  "image-cropper": load(() =>
+    import("@/components/tools/ImageCropper").then((m) => ({ default: m.ImageCropper })),
+  ),
+  "exif-remover": load(() =>
+    import("@/components/tools/ExifRemover").then((m) => ({ default: m.ExifRemover })),
+  ),
+  "jpg-to-pdf": load(() =>
+    import("@/components/tools/JpgToPdf").then((m) => ({ default: m.JpgToPdf })),
+  ),
+  "open-graph-generator": load(() =>
+    import("@/components/tools/OgGenerator").then((m) => ({ default: m.OgGenerator })),
+  ),
+  "robots-generator": load(() =>
+    import("@/components/tools/RobotsGenerator").then((m) => ({ default: m.RobotsGenerator })),
+  ),
+  "schema-markup-generator": load(() =>
+    import("@/components/tools/SchemaMarkupGenerator").then((m) => ({
+      default: m.SchemaMarkupGenerator,
+    })),
+  ),
+  "readability-score": load(() =>
+    import("@/components/tools/ReadabilityScore").then((m) => ({ default: m.ReadabilityScore })),
+  ),
 };
 
 export function ToolLoader({ slug }: { slug: string }) {
