@@ -129,7 +129,7 @@ Free Tools. Smarter Work. Anywhere.
   - [x] Accessibility: skip link, focus states, native dialog, arrow-key dropdown, WCAG contrast audit (fixed light-mode subtle text 3.55:1 → 4.75:1)
   - [x] Security: security response headers verified in production responses; AI key server-only; rate limiting; `.env*` gitignored; Markdown/JSON-LD sanitized
   - [x] Performance: code-split tools via `next/dynamic`, `next/font`, `next/image`, static prerendering of 31 tool pages
-- [ ] Deployment: GitHub repo `Tolasogood123/my-tool` created and `main` pushed; Cloudflare Pages deployment NOT done — `wrangler whoami` requires the owner to run `npx wrangler login` first. A Next.js 16 app with `cacheComponents` and `/api/ai` needs the OpenNext Cloudflare adapter, not a plain static export.
+- [x] Deployment: GitHub repo `Tolasogood123/my-tool` created and `main` pushed; Vercel deployment completed by the project owner (URL to be recorded when provided). Cloudflare Pages was not used — no `wrangler login` was performed in this session.
 
 ## Notes
 
