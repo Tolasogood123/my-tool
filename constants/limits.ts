@@ -10,3 +10,4 @@ export const ACCEPTED_IMAGE_ACCEPT = ACCEPTED_IMAGE_TYPES.join(",");
 
 export const MAX_TEXT_INPUT_CHARS = 500_000;
 export const MAX_PDF_UPLOAD_BYTES = 20 * 1024 * 1024;
+export const MAX_VIDEO_UPLOAD_BYTES = 50 * 1024 * 1024;

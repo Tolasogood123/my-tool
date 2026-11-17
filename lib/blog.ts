@@ -8,7 +8,30 @@ export interface BlogPost {
   content: string;
 }
 
+import { batchGBlogs } from "./blog-batch-g";
+import { batchHBlogs } from "./blog-batch-h";
+import { batchIBlogs } from "./blog-batch-i";
+import { batchJBlogs } from "./blog-batch-j";
+import { batchKBlogs } from "./blog-batch-k";
+import { batchLBlogs } from "./blog-batch-l";
+import { batchMBlogs } from "./blog-batch-m";
+import { batchNBlogs } from "./blog-batch-n";
+import { batchOBlogs } from "./blog-batch-o";
+import { batchPBlogs } from "./blog-batch-p";
+import { batchQBlogs } from "./blog-batch-q";
+
 export const blogPosts: BlogPost[] = [
+  ...batchGBlogs,
+  ...batchHBlogs,
+  ...batchIBlogs,
+  ...batchJBlogs,
+  ...batchKBlogs,
+  ...batchLBlogs,
+  ...batchMBlogs,
+  ...batchNBlogs,
+  ...batchOBlogs,
+  ...batchPBlogs,
+  ...batchQBlogs,
   {
     slug: "compress-images-for-the-web",
     title: "How to Compress Images for the Web Without Losing Quality",

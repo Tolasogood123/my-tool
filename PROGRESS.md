@@ -112,6 +112,17 @@ Free Tools. Smarter Work. Anywhere.
 - [x] Skipped 5 planned Stage 3 entries because they were already `ready`: Profit Margin Calculator, PDF Merge, PDF Split, Color Contrast Checker, Social Caption Counter (the "Social Media Character Counter" entry)
 - [x] Final verification: `npm run check:registry` 50 tools valid, tsc pass, lint pass, build pass
 
+## 50+ More Tools (TOLADEV_50_MORE_TOOLS_PROMPT.md, Batches G–Q)
+
+- [x] Plan updated: Batch Q (10 tools) added after Batch P; RESERVE LIST replaced with the 10 new reserve tools
+- [x] Batch G, Tool 1: Video Thumbnail Extractor (`/tools/video-thumbnail-extractor`) — ready, 4 FAQs, Canvas frame capture from local MP4/WebM/OGG/MOV up to 50 MB, PNG/JPEG export, timeline seeking, validation and object-URL cleanup
+- [x] Verification after tool: tsc pass, lint pass, build pass; `check:registry` valid for 51 tools
+- [x] Batch G, Tools 2–5 (Audio Trimmer, Audio Volume Booster, Audio Speed Changer, Subtitle Converter) — done with WAV export and honest pitch/clipping notes
+- [x] Batches H through Q — all done: 60 tools total added by this plan (50 + 10 in Batch Q)
+- [x] Skipped 2 Batch Q duplicates per rule 2 and used reserve tools: Freelance Rate Calculator (for Word Frequency Counter), Savings Goal Calculator (for Reading Time Calculator). Product Price Calculator in Batch H was replaced by Break-even Calculator.
+- [x] Per-batch blog guides: 11 original 800+ word guides added to `lib/blog.ts` (one per batch), with internal links to their tools
+- [x] Final verification after full integration: `check:registry` 110 tools valid, tsc pass, lint pass (all subagent lint errors fixed), build pass (110 tool pages prerendered)
+
 ## Later Phases (do not start without approval)
 
 - [x] Phase 3 PDF, Student, Business, SEO, Social, Productivity tools (25 tools total; all browser-based, full registry content, code-split)
@@ -144,7 +155,7 @@ Free Tools. Smarter Work. Anywhere.
 - `pdf-documents`, `web-seo` and `social-media` categories now have real tools; `video-audio` and `e-commerce` remain honestly empty ("tools coming soon").
 - Visual refresh: indigo/violet design system, aurora hero, glass surfaces, gradient buttons/logo and glowing cards in `app/globals.css` + shared layout/home components; light/dark contrast checked; Next 16 instant-shell warnings on dynamic routes fixed with Suspense boundaries.
 - Round 1 hand checks: diff of 'hello/world' → 'hello/there/world' = +1 added, 0 removed; regex `([a-z]+)-(\d+)` on 'ab-12 cd-34' = 2 matches with groups ['ab','12'] and ['cd','34']; timestamp 1700000000 s → 2023-11-14T22:13:20.000Z and 0 s → 1970-01-01T00:00:00.000Z.
-- Current state after Stage 3: 50 published tools (47 `ready`, 3 `needs-api`), 50 tool pages prerendered, sitemap contains 72 URLs (8 static + 13 categories + 50 tools + 1 guide).
+- Current state after all batches: 110 published tools (107 `ready`, 3 `needs-api`), 110 tool pages prerendered, 12 blog guides, sitemap regenerated from the registry.
 - Known issue resolved in this session: the 28 pre-existing tools each had 3 FAQs; a fourth original FAQ was added to each, so all 50 tools now have exactly 4 FAQs (200 total) and satisfy TOLADEV_CONTINUE_PROMPT.md rule 4.
 - Automated browser interaction tests are still not possible from this environment (canvas image tools, PDF assembly, timer audio) — a manual pass is recommended.
 - Stage 2 was not executed in this session beyond the initial audit query; `PROGRESS.md` reflects actual current state, not the assumed one.

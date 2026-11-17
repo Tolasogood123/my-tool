@@ -10,6 +10,18 @@ import { stage3Round6Tools } from "./tools-stage3-round6";
 import { stage3Round7Tools } from "./tools-stage3-round7";
 import { stage3Round8Tools } from "./tools-stage3-round8";
 import { stage3Round9Tools } from "./tools-stage3-round9";
+import { batchGTools } from "./tools-batch-g";
+import { batchGRemainderTools } from "./tools-batch-g-remainder";
+import { batchHTools } from "./tools-batch-h";
+import { batchITools } from "./tools-batch-i";
+import { batchJTools } from "./tools-batch-j";
+import { batchKTools } from "./tools-batch-k";
+import { batchLTools } from "./tools-batch-l";
+import { batchMTools } from "./tools-batch-m";
+import { batchNTools } from "./tools-batch-n";
+import { batchOTools } from "./tools-batch-o";
+import { batchPTools } from "./tools-batch-p";
+import { batchQTools } from "./tools-batch-q";
 
 export const tools: Tool[] = [
   ...phase3Tools,
@@ -23,6 +35,18 @@ export const tools: Tool[] = [
   ...stage3Round7Tools,
   ...stage3Round8Tools,
   ...stage3Round9Tools,
+  ...batchGTools,
+  ...batchGRemainderTools,
+  ...batchHTools,
+  ...batchITools,
+  ...batchJTools,
+  ...batchKTools,
+  ...batchLTools,
+  ...batchMTools,
+  ...batchNTools,
+  ...batchOTools,
+  ...batchPTools,
+  ...batchQTools,
   {
     slug: "image-compressor",
     title: "Image Compressor",

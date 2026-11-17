@@ -232,6 +232,188 @@ const toolComponents: Record<string, ComponentType> = {
   "readability-score": load(() =>
     import("@/components/tools/ReadabilityScore").then((m) => ({ default: m.ReadabilityScore })),
   ),
+  "video-thumbnail-extractor": load(() =>
+    import("@/components/tools/VideoThumbnailExtractor").then((m) => ({
+      default: m.VideoThumbnailExtractor,
+    })),
+  ),
+  "break-even-calculator": load(() =>
+    import("@/components/tools/BreakEvenCalculator").then((m) => ({ default: m.BreakEvenCalculator })),
+  ),
+  "marketplace-fee-calculator": load(() =>
+    import("@/components/tools/MarketplaceFeeCalculator").then((m) => ({ default: m.MarketplaceFeeCalculator })),
+  ),
+  "ecommerce-profit-calculator": load(() =>
+    import("@/components/tools/EcommerceProfitCalculator").then((m) => ({ default: m.EcommerceProfitCalculator })),
+  ),
+  "wholesale-price-calculator": load(() =>
+    import("@/components/tools/WholesalePriceCalculator").then((m) => ({ default: m.WholesalePriceCalculator })),
+  ),
+  "product-sku-generator": load(() =>
+    import("@/components/tools/ProductSkuGenerator").then((m) => ({ default: m.ProductSkuGenerator })),
+  ),
+  "audio-trimmer": load(() =>
+    import("@/components/tools/AudioTrimmer").then((m) => ({ default: m.AudioTrimmer })),
+  ),
+  "audio-volume-booster": load(() =>
+    import("@/components/tools/AudioVolumeBooster").then((m) => ({ default: m.AudioVolumeBooster })),
+  ),
+  "audio-speed-changer": load(() =>
+    import("@/components/tools/AudioSpeedChanger").then((m) => ({ default: m.AudioSpeedChanger })),
+  ),
+  "subtitle-converter": load(() =>
+    import("@/components/tools/SubtitleConverter").then((m) => ({ default: m.SubtitleConverter })),
+  ),
+  "barcode-generator": load(() =>
+    import("@/components/tools/BarcodeGenerator").then((m) => ({ default: m.BarcodeGenerator })),
+  ),
+  "shipping-cost-calculator": load(() =>
+    import("@/components/tools/ShippingCostCalculator").then((m) => ({ default: m.ShippingCostCalculator })),
+  ),
+  "inventory-calculator": load(() =>
+    import("@/components/tools/InventoryCalculator").then((m) => ({ default: m.InventoryCalculator })),
+  ),
+  "return-policy-generator": load(() =>
+    import("@/components/tools/ReturnPolicyGenerator").then((m) => ({ default: m.ReturnPolicyGenerator })),
+  ),
+  "discount-price-generator": load(() =>
+    import("@/components/tools/DiscountPriceGenerator").then((m) => ({ default: m.DiscountPriceGenerator })),
+  ),
+  "content-calendar-generator": load(() =>
+    import("@/components/tools/ContentCalendarGenerator").then((m) => ({ default: m.ContentCalendarGenerator })),
+  ),
+  "instagram-grid-planner": load(() =>
+    import("@/components/tools/InstagramGridPlanner").then((m) => ({ default: m.InstagramGridPlanner })),
+  ),
+  "link-in-bio-generator": load(() =>
+    import("@/components/tools/LinkInBioGenerator").then((m) => ({ default: m.LinkInBioGenerator })),
+  ),
+  "social-image-resizer": load(() =>
+    import("@/components/tools/SocialImageResizer").then((m) => ({ default: m.SocialImageResizer })),
+  ),
+  "utm-link-builder": load(() =>
+    import("@/components/tools/UtmLinkBuilder").then((m) => ({ default: m.UtmLinkBuilder })),
+  ),
+  "ip-subnet-calculator": load(() =>
+    import("@/components/tools/IpSubnetCalculator").then((m) => ({ default: m.IpSubnetCalculator })),
+  ),
+  "user-agent-parser": load(() =>
+    import("@/components/tools/UserAgentParser").then((m) => ({ default: m.UserAgentParser })),
+  ),
+  "browser-information": load(() =>
+    import("@/components/tools/BrowserInformation").then((m) => ({ default: m.BrowserInformation })),
+  ),
+  "http-status-reference": load(() =>
+    import("@/components/tools/HttpStatusReference").then((m) => ({ default: m.HttpStatusReference })),
+  ),
+  "network-port-reference": load(() =>
+    import("@/components/tools/NetworkPortReference").then((m) => ({ default: m.NetworkPortReference })),
+  ),
+  "color-blindness-simulator": load(() =>
+    import("@/components/tools/ColorBlindnessSimulator").then((m) => ({ default: m.ColorBlindnessSimulator })),
+  ),
+  "nato-phonetic-converter": load(() =>
+    import("@/components/tools/NatoPhoneticConverter").then((m) => ({ default: m.NatoPhoneticConverter })),
+  ),
+  "morse-code-translator": load(() =>
+    import("@/components/tools/MorseCodeTranslator").then((m) => ({ default: m.MorseCodeTranslator })),
+  ),
+  "khmer-numeral-converter": load(() =>
+    import("@/components/tools/KhmerNumeralConverter").then((m) => ({ default: m.KhmerNumeralConverter })),
+  ),
+  "number-to-words": load(() =>
+    import("@/components/tools/NumberToWords").then((m) => ({ default: m.NumberToWords })),
+  ),
+  "cron-generator": load(() =>
+    import("@/components/tools/CronGenerator").then((m) => ({ default: m.CronGenerator })),
+  ),
+  "css-gradient-generator": load(() =>
+    import("@/components/tools/CssGradientGenerator").then((m) => ({ default: m.CssGradientGenerator })),
+  ),
+  "box-shadow-generator": load(() =>
+    import("@/components/tools/BoxShadowGenerator").then((m) => ({ default: m.BoxShadowGenerator })),
+  ),
+  "gitignore-generator": load(() =>
+    import("@/components/tools/GitignoreGenerator").then((m) => ({ default: m.GitignoreGenerator })),
+  ),
+  "mock-json-generator": load(() =>
+    import("@/components/tools/MockJsonGenerator").then((m) => ({ default: m.MockJsonGenerator })),
+  ),
+  "scientific-calculator": load(() =>
+    import("@/components/tools/ScientificCalculator").then((m) => ({ default: m.ScientificCalculator })),
+  ),
+  "matrix-calculator": load(() =>
+    import("@/components/tools/MatrixCalculator").then((m) => ({ default: m.MatrixCalculator })),
+  ),
+  "equation-solver": load(() =>
+    import("@/components/tools/EquationSolver").then((m) => ({ default: m.EquationSolver })),
+  ),
+  "citation-generator": load(() =>
+    import("@/components/tools/CitationGenerator").then((m) => ({ default: m.CitationGenerator })),
+  ),
+  "study-timetable-generator": load(() =>
+    import("@/components/tools/StudyTimetableGenerator").then((m) => ({ default: m.StudyTimetableGenerator })),
+  ),
+  "time-zone-converter": load(() =>
+    import("@/components/tools/TimeZoneConverter").then((m) => ({ default: m.TimeZoneConverter })),
+  ),
+  "meeting-time-planner": load(() =>
+    import("@/components/tools/MeetingTimePlanner").then((m) => ({ default: m.MeetingTimePlanner })),
+  ),
+  "sleep-cycle-calculator": load(() =>
+    import("@/components/tools/SleepCycleCalculator").then((m) => ({ default: m.SleepCycleCalculator })),
+  ),
+  "calorie-calculator": load(() =>
+    import("@/components/tools/CalorieCalculator").then((m) => ({ default: m.CalorieCalculator })),
+  ),
+  "water-intake-calculator": load(() =>
+    import("@/components/tools/WaterIntakeCalculator").then((m) => ({ default: m.WaterIntakeCalculator })),
+  ),
+  "pdf-page-numbering": load(() =>
+    import("@/components/tools/PdfPageNumbering").then((m) => ({ default: m.PdfPageNumbering })),
+  ),
+  "pdf-watermark": load(() =>
+    import("@/components/tools/PdfWatermark").then((m) => ({ default: m.PdfWatermark })),
+  ),
+  "image-color-picker": load(() =>
+    import("@/components/tools/ImageColorPicker").then((m) => ({ default: m.ImageColorPicker })),
+  ),
+  "passport-photo-maker": load(() =>
+    import("@/components/tools/PassportPhotoMaker").then((m) => ({ default: m.PassportPhotoMaker })),
+  ),
+  "svg-to-jsx": load(() =>
+    import("@/components/tools/SvgToJsx").then((m) => ({ default: m.SvgToJsx })),
+  ),
+  "unit-converter": load(() =>
+    import("@/components/tools/UnitConverter").then((m) => ({ default: m.UnitConverter })),
+  ),
+  "bmi-calculator": load(() =>
+    import("@/components/tools/BmiCalculator").then((m) => ({ default: m.BmiCalculator })),
+  ),
+  "lorem-ipsum-generator": load(() =>
+    import("@/components/tools/LoremIpsumGenerator").then((m) => ({ default: m.LoremIpsumGenerator })),
+  ),
+  "sql-formatter": load(() =>
+    import("@/components/tools/SqlFormatter").then((m) => ({ default: m.SqlFormatter })),
+  ),
+  "hash-generator": load(() =>
+    import("@/components/tools/HashGenerator").then((m) => ({ default: m.HashGenerator })),
+  ),
+  "invoice-generator": load(() =>
+    import("@/components/tools/InvoiceGenerator").then((m) => ({ default: m.InvoiceGenerator })),
+  ),
+  "freelance-rate-calculator": load(() =>
+    import("@/components/tools/FreelanceRateCalculator").then((m) => ({ default: m.FreelanceRateCalculator })),
+  ),
+  "savings-goal-calculator": load(() =>
+    import("@/components/tools/SavingsGoalCalculator").then((m) => ({ default: m.SavingsGoalCalculator })),
+  ),
+  "image-rotator": load(() =>
+    import("@/components/tools/ImageRotator").then((m) => ({ default: m.ImageRotator })),
+  ),
+  "favicon-generator": load(() =>
+    import("@/components/tools/FaviconGenerator").then((m) => ({ default: m.FaviconGenerator })),
+  ),
 };
 
 export function ToolLoader({ slug }: { slug: string }) {
